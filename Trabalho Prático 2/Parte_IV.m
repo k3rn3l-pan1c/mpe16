@@ -21,11 +21,11 @@ PD = length(D) / L
 
 % Probabilidade de B sabendo que ocorreu C
 B_C = B( rem(C, 2) == 0);
-PB_C = length(B_C) / L
+PB_C = length(B_C) / length(C)
 
 % Probabilidade de B sabendo que ocorreu D
 B_D = B( rem(D, 2) == 0);
-PB_D = length(B_D) / L
+PB_D = length(B_D) / length(D)
 
 % Probabilidade de B e C
 PBC = PB_C * PC
@@ -39,8 +39,8 @@ PB_esperada = 50 / 100
 PC_esperada = 33 / 100
 PD_esperada = 20 / 100
 
-PB_C_esperada = 16 / 100
-PB_D_esperada = 10 / 100
+PB_C_esperada = 16 / 33
+PB_D_esperada = 10 / 20
 
 PBC = PB_C_esperada * PC
 PBD = PB_D_esperada * PD

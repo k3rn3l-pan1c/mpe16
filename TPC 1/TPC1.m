@@ -37,8 +37,8 @@ Ey = Sy(E);
 figure(1)
 plot(Sx, Sy, '.')
 hold on
-plot(Sx(C), Sy(C), '.')
 plot(Sx(E), Sy(E), '.')
+plot(Sx(C), Sy(C), '.')
 hold off
 
 title('Acontecimentos C e E no espaço amostral S');
@@ -50,12 +50,12 @@ legend('Espaço Amostral S', 'Acontecimento C', 'Acontecimento E');
 
 % Probabilidade do acontecimento C: como C é um vetor lógico, o número de
 % 1 representa a frequencia absoluta do acontecimento C. O número de casos
-% possíveis é o número de repetições do problema
+% possíveis são o número de repetições do problema
 PC = sum(C) / N
 
 % Probabilidade do acontecimento E: como E é um vetor lógico, o número de
 % 1 representa a frequencia absoluta do acontecimento E. O número de casos
-% possíveis é o número de repetições do problema
+% possíveis são o número de repetições do problema
 PE = sum(E) / N
 
 %% Alinea c)
@@ -77,7 +77,7 @@ E = (Sx/a).^2 + (Sy/b).^2 <= 1;
 
 % A probabilidade do acontecimento em função do número de repetições pode
 % ser obtida pela frequencia absoluta para N repetições dividindo pelo
-% número de repetições considerada
+% número de repetições consideradas
 PC_N = cumsum(C) ./ (1:N);
 PE_N = cumsum(E) ./ (1:N);
 
@@ -88,6 +88,7 @@ title('Dependência do acontecimento C em função do número de repetições (N
 xlabel('Número de repetições (N)');
 ylabel('Probabilidade (P_C)');
 
+% Dependência do acontecimento E em função do número de repetições (N)
 figure(3)
 plot(1:N, PE_N);
 title('Dependência do acontecimento E em função do número de repetições (N)');
@@ -96,10 +97,15 @@ ylabel('Probabilidade (P_E)');
 
 %% Alinea d)
 
-% Probabilidade esperada para os acontecimentos. 
+% Probabilidade esperada para os acontecimentos C e E 
 % Area(Acontecimento) / Area(Espaço Amostral)
-PC = pi * sqrt(sqrt(2)).^2 / (4 * 4)
-PE = pi * a * b / (4 * 4)
+PC_analitica = pi * sqrt(sqrt(2)).^2 / 4^2
+PE_analitica = pi * a * b / 4^2
+
+% Simulando para um número de repetições N=1e6, tanto para o acontecimento
+% C como para o aconteciemento E os valores de probabilidade obtidas
+% aproximam-se dos valores analíticos à medida que o número de repetições
+% aumenta
 
 %% Alinea e)
 
@@ -118,7 +124,8 @@ PC_E = sum(C_E) / sum(E)
 PCE = sum(C & E) / N
 
 % Confirmação do resultado obtido usando a regra de Bayes
-PC_E_esperada = PCE / PE
+PC_E_esperada = PCE / PE_N(end)
 
+% Aplicando a regra de Bayes obtemos os resultados esperados
 
 

@@ -3,7 +3,13 @@ function noise = wgnoise(sigIn, linear_SNR)
 % desejada
 
 % Potencia do sinal
-Ps = sum(abs(sigIn).^2) / length(sigIn);
+if( sum(size(sigIn) == 1 ))
+    % se for um vetor
+    Ps = sum(abs(sigIn).^2) / length(sigIn);
+else
+    % é uma matrix
+    Ps = sum(sum(abs(sigIn).^2)) / numel(sigIn);
+end;
 
 % Potencia do ruído
 Pr = Ps/linear_SNR;

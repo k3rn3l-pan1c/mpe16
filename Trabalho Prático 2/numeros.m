@@ -15,11 +15,11 @@ function [A, B, C, D] = numeros(L)
 % gera L números no intervalo [1, 100]
 A = ceil(100 * rand(1, L));
 
-% B -> valores pares da matrix A
+% B -> valores pares da matriz A
 B = A( rem(A, 2) == 0);
 
-% C -> valores da matrix A múltiplos de 3
+% C -> valores da matriz A múltiplos de 3
 C = A( rem(A, 3) == 0);
 
-% D -> valores da matrix A múltiplos de 5
+% D -> valores da matriz A múltiplos de 5
 D = A( rem(A, 5) == 0);

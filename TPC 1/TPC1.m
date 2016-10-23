@@ -50,12 +50,12 @@ legend('Espaço Amostral S', 'Acontecimento C', 'Acontecimento E');
 
 % Probabilidade do acontecimento C: como C é um vetor lógico, o número de
 % 1 representa a frequencia absoluta do acontecimento C. O número de casos
-% possíveis são o número de repetições do problema
+% possíveis são o número de repetições da experiência
 PC = sum(C) / N
 
 % Probabilidade do acontecimento E: como E é um vetor lógico, o número de
 % 1 representa a frequencia absoluta do acontecimento E. O número de casos
-% possíveis são o número de repetições do problema
+% possíveis são o número de repetições da experiência
 PE = sum(E) / N
 
 %% Alinea c)
@@ -77,7 +77,9 @@ E = (Sx/a).^2 + (Sy/b).^2 <= 1;
 
 % A probabilidade do acontecimento em função do número de repetições pode
 % ser obtida pela frequencia absoluta para N repetições dividindo pelo
-% número de repetições consideradas
+% número de repetições consideradas.
+% cumsum calcula as somas cumulativas, ou seja, o valor do indice k
+% corresponde ao somatório dos primeiros k elementos
 PC_N = cumsum(C) ./ (1:N);
 PE_N = cumsum(E) ./ (1:N);
 
@@ -103,29 +105,32 @@ PC_analitica = pi * sqrt(sqrt(2)).^2 / 4^2
 PE_analitica = pi * a * b / 4^2
 
 % Simulando para um número de repetições N=1e6, tanto para o acontecimento
-% C como para o aconteciemento E os valores de probabilidade obtidas
-% aproximam-se dos valores analíticos à medida que o número de repetições
-% aumenta
+% C como para o aconteciemento E os valores de probabilidade simulados
+% aproximam-se dos valores analíticos. À medida que o número de repetições
+% aumenta, espera-se que os resultados obtidos convirgam para o valor
+% esperado
 
 %% Alinea e)
 
-% Subespaço Amostral do acontecimento C sabendo que ocorreu E
+% Subespaço Amostral do acontecimento C sabendo que ocorreu E. A condição
+% que define o acontecimento C é obtida para o subconjunto do espaço
+% amostral que resulta da condição E
 C_E = Sx(E).^2 + Sy(E).^2 <= sqrt(2);
 
 % Probabilidade do acontecimento C sabendo que ocorreu o acontecimento E.
 % Como tanto C_E e E são vetores lógicos, a sua soma resulta na frequencia
-% absoluta dos acontecimentos
+% absoluta das suas condições
 PC_E = sum(C_E) / sum(E)
 
 % Probabilidade de o acontecimento C e E ocorrem. Os casos favoráveis são
 % dados pela operação AND entre os vetores lógicos C e E, obtendo-se um
 % vetor lógico, cujo somatório de todos os elementos resulta na frequencia
-% absoluta do acontecimento C e E
+% absoluta do acontecimento (C e E)
 PCE = sum(C & E) / N
 
 % Confirmação do resultado obtido usando a regra de Bayes
 PC_E_esperada = PCE / PE_N(end)
 
-% Aplicando a regra de Bayes obtemos os resultados esperados
+% Aplicando a regra de Bayes verificamos que os resultados estão de acordo
 
 

@@ -90,7 +90,7 @@ PAB = sum(A & B) / length(X)
 
 % Se os acontecimentos forem independentes, a sua probabilidade deve ser
 % dada pela soma das probabilidades individuais
-PAB_ind = PA + PB
+PAB_ind = PA * PB
 
 % Não são independentes, poise PAB_ind ~= PAB
 % A independência podia ser verificada pela entropia...

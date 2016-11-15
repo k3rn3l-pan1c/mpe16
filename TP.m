@@ -18,7 +18,7 @@ X = rem( sum(dado, 1), 10)
 
 %% 3 - Histograma de X, usando um nº de bins identico ao número de valores únicos de X
 figure(1)
-hist(X, unique(X))
+hist(X, length(unique(X)))
 title('Histograma de X');
 ylabel('Frequencia absoluta');
 xlabel('Valores únicos de X');
@@ -31,7 +31,7 @@ Y = floor(Ysum./10.^(floor(log10(Ysum))));
 
 %% 5 - Histograma de Y, usando um nº de bins identico ao número de valores únicos de Y
 figure(2)
-hist(Y, unique(Y))
+hist(Y, length(unique(Y)))
 title('Histograma de Y');
 ylabel('Frequencia absoluta de Y');
 xlabel('Valores únicos de Y');

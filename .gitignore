@@ -1,2 +1,7 @@
-#pdf files
+# Ignore Pdf files and temporary matlab files
 *.pdf
+*.m~
+*~
+
+# Ignore html files from publishing
+TPC\ 1/html/

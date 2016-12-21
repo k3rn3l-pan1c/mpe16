@@ -35,7 +35,7 @@ end;
 fclose(fileID);
 
 % função densidade de probabilidade. letters contem a ocorrencia de cada
-% ketra, logo sum(letters) contem o numero total de ocorrencias
+% letra, logo sum(letters) contem o numero total de ocorrencias
 pmf = letters ./ sum(letters);
 
 % gráfico de barras

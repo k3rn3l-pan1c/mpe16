@@ -69,8 +69,8 @@ pmfIndependente = pmfH * pmfS;
 figure(5)
 surf(pmfIndependente)
 title('Função densidade de probabilidade conjunta')
-xlabel('H (hue)');
-ylabel('S (Saturation)');
+xlabel('S (Saturation)');
+ylabel('H (hue)');
 zlabel('Probabilidade');
 
 % Como se pode observar pelos gráficos 5 e 2, as pmf conjuntas são

@@ -274,7 +274,7 @@ for k = n
     
     % Offset ás diferenças consecutivas para codificar os valores das
     % diferenças consecutivas só com número positivos, para de seguida
-    % cpnverter para binário
+    % converter para binário
     offset = abs(min(ydifq));
     ydifq_offset = ydifq + offset;
     
